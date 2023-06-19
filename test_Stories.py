@@ -25,3 +25,6 @@ my_ans = {
 myStory = story.generate(my_ans)
 
 print(myStory)
+
+#PAM gonna grab this later
+# <!--{% for prompt in prompts %}<label for="{{prompt}}">{{prompt}}</label><input type="text" placeholder="{{prompt}}" name="{{prompt}}" /><br><br>{% endfor %}-->
