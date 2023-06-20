@@ -21,9 +21,7 @@ my_ans = {
     "verb"          : "ride",
     "plural_noun"   : "waves",
 }
-
 myStory = story.generate(my_ans)
-
 print(myStory)
 
 #PAM gonna grab this later
