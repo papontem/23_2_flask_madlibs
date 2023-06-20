@@ -68,13 +68,19 @@ def home_form_submit_show_story_HTML_():
     """Handle request to show the story like /story?prompt=<prompt_value>&prompt=<prompt_value>&...."""
 
     prompts = story.prompts
-    # ans = # whatever could i have sent
-    # result = story.generate(ans)
-    # sent_data = [request.form.get(prompt) for prompt in prompts ] # was not form
     sent_data = request.args
+    answers = {} 
+    # answers = [request.args[prompt] for prompt in prompts]
 
-    answers = [request.args[prompt] for prompt in prompts ] # was it arguments?
+    for prompt in prompts:
+        if request.args[prompt] != '':
+            answers[prompt] = request.args[prompt]
+        else:
+            answers[prompt] = prompt
+
+    result = story.generate(answers)
     
+
     html = f"""
     <html lang="en">
 	<head>
@@ -95,13 +101,12 @@ def home_form_submit_show_story_HTML_():
                 <hr/>
                 <main>
                     <p>
-                        sent data: {sent_data}
-                        <br>
-                        answers: {answers}
-                        <br>
-                        gonna put story here: 
-                        <br>
-                        placeholder lorem ipsum yadayada
+                        <!-- gonna put story here: -->
+                        <blockquote>
+                            {result}
+                        </blockquote>
+                        <!-- sent data: <blockquote>{sent_data}</blockquote> -->
+                        <!-- answers: <blockquote>{answers}</blockquote> -->
                     </p>
                 </main>
                 <hr/>
@@ -114,5 +119,4 @@ def home_form_submit_show_story_HTML_():
         </body>
     </html>
     """
-
     return html
