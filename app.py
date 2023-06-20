@@ -1,7 +1,6 @@
 # this is app.py
 from flask import Flask, request, render_template
 from flask_debugtoolbar import DebugToolbarExtension
-from random import randint, choice, sample
 from stories import *
 
 #flask requiered app name
