@@ -76,7 +76,7 @@ def home_form_submit_show_story_HTML_():
         if request.args[prompt] != '':
             answers[prompt] = request.args[prompt]
         else:
-            answers[prompt] = prompt
+            answers[prompt] = '{' + prompt + '}'
 
     result = story.generate(answers)
     
